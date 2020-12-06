@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UserInformationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookFlight">
+          <Key>
+            <PropertyRef Name="seat" />
+          </Key>
+          <Property Name="flight_id" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="seat" Type="int" Nullable="false" />
+          <Property Name="DOB" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Flights">
+          <Key>
+            <PropertyRef Name="airline_id" />
+          </Key>
+          <Property Name="airline_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="flight_id" Type="varchar" MaxLength="50" />
+          <Property Name="departdate" Type="datetime" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Departure" Type="varchar" MaxLength="50" />
+          <Property Name="Arrival" Type="varchar" MaxLength="50" />
+          <Property Name="Airline" Type="varchar(max)" />
+          <Property Name="Class" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="roomnum" />
+          </Key>
+          <Property Name="roomnum" Type="int" Nullable="false" />
+          <Property Name="checkin" Type="varchar" MaxLength="50" />
+          <Property Name="checkout" Type="varchar" MaxLength="50" />
+          <Property Name="roomtype" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UsersLogin">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="UserInformationModelStoreContainer">
+          <EntitySet Name="BookFlight" EntityType="Self.BookFlight" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flights" EntityType="Self.Flights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersLogin" EntityType="Self.UsersLogin" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UserInformationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BookFlight">
+          <Key>
+            <PropertyRef Name="seat" />
+          </Key>
+          <Property Name="flight_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="seat" Type="Int32" Nullable="false" />
+          <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="airline_id" />
+          </Key>
+          <Property Name="airline_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="flight_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="departdate" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Departure" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Arrival" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Airline" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="roomnum" />
+          </Key>
+          <Property Name="roomnum" Type="Int32" Nullable="false" />
+          <Property Name="checkin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="checkout" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UsersLogin">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="UserInformationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookFlights" EntityType="Self.BookFlight" />
+          <EntitySet Name="Flights" EntityType="Self.Flight" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="UsersLogins" EntityType="Self.UsersLogin" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UserInformationModelStoreContainer" CdmEntityContainer="UserInformationEntities">
+          <EntitySetMapping Name="BookFlights">
+            <EntityTypeMapping TypeName="UserInformationModel.BookFlight">
+              <MappingFragment StoreEntitySet="BookFlight">
+                <ScalarProperty Name="flight_id" ColumnName="flight_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="seat" ColumnName="seat" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flights">
+            <EntityTypeMapping TypeName="UserInformationModel.Flight">
+              <MappingFragment StoreEntitySet="Flights">
+                <ScalarProperty Name="airline_id" ColumnName="airline_id" />
+                <ScalarProperty Name="flight_id" ColumnName="flight_id" />
+                <ScalarProperty Name="departdate" ColumnName="departdate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Arrival" ColumnName="Arrival" />
+                <ScalarProperty Name="Airline" ColumnName="Airline" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="UserInformationModel.Room">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="roomnum" ColumnName="roomnum" />
+                <ScalarProperty Name="checkin" ColumnName="checkin" />
+                <ScalarProperty Name="checkout" ColumnName="checkout" />
+                <ScalarProperty Name="roomtype" ColumnName="roomtype" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersLogins">
+            <EntityTypeMapping TypeName="UserInformationModel.UsersLogin">
+              <MappingFragment StoreEntitySet="UsersLogin">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

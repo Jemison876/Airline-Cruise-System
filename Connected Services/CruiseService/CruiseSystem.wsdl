@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://HotelSystem.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://HotelSystem.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://HotelSystem.com/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DisplayAvailable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chout" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DisplayAvailableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DisplayAvailableResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookRoom">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rnum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="chin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chout" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookRoomResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookRoomResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="DisplayAvailableSoapIn">
+    <wsdl:part name="parameters" element="tns:DisplayAvailable" />
+  </wsdl:message>
+  <wsdl:message name="DisplayAvailableSoapOut">
+    <wsdl:part name="parameters" element="tns:DisplayAvailableResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookRoomSoapIn">
+    <wsdl:part name="parameters" element="tns:BookRoom" />
+  </wsdl:message>
+  <wsdl:message name="BookRoomSoapOut">
+    <wsdl:part name="parameters" element="tns:BookRoomResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CruiseSystemSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DisplayAvailable">
+      <wsdl:input message="tns:DisplayAvailableSoapIn" />
+      <wsdl:output message="tns:DisplayAvailableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookRoom">
+      <wsdl:input message="tns:BookRoomSoapIn" />
+      <wsdl:output message="tns:BookRoomSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CruiseSystemSoap" type="tns:CruiseSystemSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://HotelSystem.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisplayAvailable">
+      <soap:operation soapAction="http://HotelSystem.com/DisplayAvailable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookRoom">
+      <soap:operation soapAction="http://HotelSystem.com/BookRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CruiseSystemSoap12" type="tns:CruiseSystemSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://HotelSystem.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisplayAvailable">
+      <soap12:operation soapAction="http://HotelSystem.com/DisplayAvailable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookRoom">
+      <soap12:operation soapAction="http://HotelSystem.com/BookRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CruiseSystem">
+    <wsdl:port name="CruiseSystemSoap" binding="tns:CruiseSystemSoap">
+      <soap:address location="https://localhost:44356/CruiseSystem.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CruiseSystemSoap12" binding="tns:CruiseSystemSoap12">
+      <soap12:address location="https://localhost:44356/CruiseSystem.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
